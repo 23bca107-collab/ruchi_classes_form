@@ -38,7 +38,7 @@ config.php
 ![Teacher Assignment](Screenshots/Screenshot_2025-12-31_132233.png)
 
 ### home page
-![Home page](Screenshot_2025-12-31_132153.png)
+![Home page](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132153.png)
 
 ### Student Management
 ![Student Management](Screenshots/Screenshot_2025-12-31_132216.png)
