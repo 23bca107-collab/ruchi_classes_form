@@ -32,16 +32,16 @@ config.php
 ## 📸 Project Screenshots
 
 ### Admin Dashboard
-![Admin Dashboard](Screenshots/Screenshot_2025-12-31_132302.png)
+![Admin Dashboard](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132302.png)
 
 ### Teacher Assignment
-![Teacher Assignment](Screenshots/Screenshot_2025-12-31_132233.png)
+![Teacher Assignment](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132233.png)
 
 ### home page
 ![Home page](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132153.png)
 
 ### Student Management
-![Student Management](Screenshots/Screenshot_2025-12-31_132216.png)
+![Student Management](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132216.png)
 
 
 ## Developed By
