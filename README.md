@@ -32,16 +32,16 @@ config.php
 ## 📸 Project Screenshots
 
 ### Admin Dashboard
-![Admin Dashboard](Screenshots/Screenshot%202025-12-31%20132153.png)
+![Admin Dashboard](Screenshots/Screenshot_2025-12-31_132302.png)
 
 ### Teacher Assignment
-![Teacher Assignment](Screenshots/Screenshot%202025-12-31%20132216.png)
+![Teacher Assignment](Screenshots/Screenshot_2025-12-31_132233.png)
 
-### Attendance Management
-![Attendance Management](Screenshots/Screenshot%202025-12-31%20132233.png)
+### home page
+![Home page](Screenshots/Screenshot_2025-12-31_132153.png)
 
 ### Student Management
-![Student Management](Screenshots/Screenshot%202025-12-31%20132302.png)
+![Student Management](Screenshots/Screenshot_2025-12-31_132216.png)
 
 
 ## Developed By
