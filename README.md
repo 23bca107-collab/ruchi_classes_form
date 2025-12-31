@@ -44,8 +44,8 @@ config.php
 ![Student Management](ruchi_classes_form/Screenshots/Screenshot_2025-12-31_132216.png)
 
 
-## Developed By
-Tauﬁq Khan  
-BCA Student
-Phone Number:9023019948
-email:23bca107@gsfcuniversity.ac.in,tk366430@gmail.com
+Contact Me:
+Tauﬁq Khan – BCA Student
+📞 Phone: 9023019948
+📧 Email: 23bca107@gsfcuniversity.ac.in
+ / tk366430@gmail.com
