@@ -47,3 +47,5 @@ config.php
 ## Developed By
 Tauﬁq Khan  
 BCA Student
+Phone Number:9023019948
+email:23bca107@gsfcuniversity.ac.in,tk366430@gmail.com
