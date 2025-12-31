@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Signup | Educational Platform</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+    position: relative;
+    animation: formAppear 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+@keyframes formAppear {
+    to {opacity:1; transform:translateY(0);}
+}
+.form-header {
+    background: linear-gradient(to right, #4CAF50, #2E8B57);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+.form-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+}
+.form-header img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+.form-header h2 {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+.form-header p {
+    font-size: 16px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+.form-body {
+    padding: 35px;
+}
+.input-group {
+    margin-bottom: 35px;
+    position: relative;
+}
+.input-group input {
+    width: 100%;
+    padding: 18px 50px 18px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+.input-group input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+    outline: none;
+    background: #fff;
+}
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    background: transparent;
+    padding: 0 5px;
+    color: #999;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 14px;
+    color: #4CAF50;
+    font-weight: 600;
+    background: white;
+    padding: 0 8px;
+}
+.input-group input::placeholder {
+    color: transparent;
+}
+.input-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 18px;
+    z-index: 2;
+}
+.input-group input:focus ~ .input-icon {
+    color: #4CAF50;
+}
+.password-toggle {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    z-index: 2;
+}
+.password-toggle:hover {
+    color: #4CAF50;
+}
+.submit-btn, .link-btn {
+    background: linear-gradient(to right, #4CAF50, #2E8B57);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 18px rgba(76, 175, 80, 0.35);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+.submit-btn:hover, .link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+}
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+.password-rules {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #777;
+}
+.password-rule {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.rule-icon {
+    margin-right: 8px;
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.rule-valid { color: #4CAF50; }
+.rule-invalid { color: #f44336; }
+.message {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 15px;
+    display: none;
+}
+.error { background: #ffebee; color: #d32f2f; border-left: 4px solid #d32f2f; }
+.success { background: #e8f5e9; color: #388e3c; border-left: 4px solid #388e3c; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-header">
+        <img src="../assets/Ruchi logo.jpg" alt="Logo">
+        <h2>Student Signup</h2>
+        <p>Join our learning community today</p>
+    </div>
+
+    <div class="form-body">
+        <form id="signupForm" action="signup.php" method="POST">
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder=" " required autocomplete="off">
+                <label for="email">Email Address</label>
+                <i class="input-icon fas fa-envelope"></i>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+                <span class="password-toggle" id="passwordToggle"><i class="fas fa-eye"></i></span>
+                <i class="input-icon fas fa-lock"></i>
+            </div>
+
+            <div class="password-rules" id="passwordRules">
+                <div class="password-rule" id="ruleLength"><span class="rule-icon">•</span>At least 8 characters</div>
+                <div class="password-rule" id="ruleUppercase"><span class="rule-icon">•</span>Contains uppercase letter</div>
+                <div class="password-rule" id="ruleNumber"><span class="rule-icon">•</span>Contains number</div>
+                <div class="password-rule" id="ruleSpecial"><span class="rule-icon">•</span>Contains special character</div>
+            </div>
+
+            <div class="input-group" style="margin-top: 20px;">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder=" " required>
+                <label for="confirm_password">Confirm Password</label>
+                <span class="password-toggle" id="confirmPasswordToggle"><i class="fas fa-eye"></i></span>
+                <i class="input-icon fas fa-lock"></i>
+            </div>
+
+            <button type="submit" class="submit-btn"><i class="fas fa-user-plus" style="margin-right: 8px;"></i>Create Account</button>
+
+            <div id="message" class="message"></div>
+
+            <div class="links-container">
+                <a href="login.html" class="link-btn"><i class="fas fa-sign-in-alt" style="margin-right:8px;"></i>Already have an account? Login</a>
+                <a href="admission_form.html" class="link-btn"><i class="fas fa-graduation-cap" style="margin-right:8px;"></i>Apply for Admission</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordField = document.getElementById('password');
+    const confirmPasswordField = document.getElementById('confirm_password');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+    const messageDiv = document.getElementById('message');
+
+    // Toggle password visibility
+    passwordToggle.addEventListener('click', () => {
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+        passwordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+    confirmPasswordToggle.addEventListener('click', () => {
+        const type = confirmPasswordField.type === 'password' ? 'text' : 'password';
+        confirmPasswordField.type = type;
+        confirmPasswordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+
+    // Form submit validation
+    document.getElementById('signupForm').addEventListener('submit', function(e){
+        const email = document.getElementById('email').value.trim();
+        const password = passwordField.value;
+        const confirmPassword = confirmPasswordField.value;
+
+        messageDiv.style.display = 'none';
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailRegex.test(email)){
+            showMessage('Please enter a valid email address','error');
+            e.preventDefault(); return;
+        }
+        if(password.length < 8){
+            showMessage('Password must be at least 8 characters','error');
+            e.preventDefault(); return;
+        }
+        if(password !== confirmPassword){
+            showMessage('Passwords do not match','error');
+            e.preventDefault(); return;
+        }
+        const hasUpper = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+        if(!hasUpper || !hasNumber || !hasSpecial){
+            showMessage('Password does not meet all requirements','error');
+            e.preventDefault(); return;
+        }
+
+        showMessage('Creating your account...','success');
+    });
+
+    function showMessage(text,type){
+        messageDiv.textContent = text;
+        messageDiv.className = 'message ' + type;
+        messageDiv.style.display = 'block';
+    }
+});
+</script>
+
+</body>
+</html>

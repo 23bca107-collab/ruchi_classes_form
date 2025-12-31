@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Form</title>
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #f5f5f5;
+            --dark-color: #333;
+            --success-color: #27ae60;
+            --error-color: #e74c3c;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 10px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        header h1 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+        }
+        
+        header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .form-section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px; /* Prevents zoom on iOS */
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--accent-color);
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -8px;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 0 8px;
+            min-width: 0;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .photo-preview {
+            width: 120px;
+            height: 120px;
+            border: 1px dashed #ddd;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .photo-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-home {
+            background-color: #6c757d;
+        }
+        
+        .btn-home:hover {
+            background-color: #5a6268;
+        }
+        
+        @media (max-width: 576px) {
+            .row {
+                flex-direction: column;
+            }
+            .col {
+                margin-bottom: 10px;
+            }
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="../assets/Ruchi logo.jpg" alt="Student Academies Logo" class="logo">
+        </div>
+        
+        <header>
+            <h1>Student Admission Form</h1>
+            <p>Please fill out all required fields (*) to complete your admission application</p>
+        </header>
+        
+        <form id="admissionForm" enctype="multipart/form-data">
+            <!-- Personal Information -->
+            <div class="form-section">
+                <div class="section-title">Personal Information</div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="first_name" class="required">First Name</label>
+                            <input type="text" id="first_name" name="first_name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="last_name" class="required">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="father_name" class="required">Father's Name</label>
+                            <input type="text" id="father_name" name="father_name" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="mother_name" class="required">Mother's Name</label>
+                            <input type="text" id="mother_name" name="mother_name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="dob" class="required">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="gender" class="required">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Student Photo</label>
+                    <input type="file" id="photo" name="photo" accept=".jpg,.jpeg">
+                    <div class="photo-preview">
+                        <img id="previewImg" src="#" alt="Photo Preview">
+                        <span id="previewText">Image Preview</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Academic Information -->
+            <div class="form-section">
+                <div class="section-title">Academic Information</div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="class" class="required">Class</label>
+                            <select id="class" name="class" required>
+                                <option value="">Select Class</option>
+                                <option value="8">Class 8</option>
+                                <option value="9">Class 9</option>
+                                <option value="10">Class 10</option>
+                                <option value="11">Class 11</option>
+                                <option value="12">Class 12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="medium" class="required">Medium</label>
+                            <select id="medium" name="medium" required>
+                                <option value="">Select Medium</option>
+                                <option value="English">English</option>
+                                <option value="Hindi">Hindi</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="board" class="required">Board</label>
+                            <input type="text" id="board" name="board" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="school" class="required">Previous School Name</label>
+                            <input type="text" id="school" name="school" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="previous_marks" class="required">Previous Year Marks (%)</label>
+                    <input type="number" id="previous_marks" name="previous_marks" min="0" max="100" step="0.01" required>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="form-section">
+                <div class="section-title">Contact Information</div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="parent_mobile" class="required">Parent's Mobile Number</label>
+                            <input type="tel" id="parent_mobile" name="parent_mobile" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="personal_mobile" class="required">Student's Mobile Number</label>
+                            <input type="tel" id="personal_mobile" name="personal_mobile" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="whatsapp" class="required">WhatsApp Number</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="email" class="required">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Fields -->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="city" class="required">City</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="state" class="required">State</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pincode" class="required">Pincode</label>
+                    <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" maxlength="6" required>
+                </div>
+                <!-- End New -->
+                <div class="form-group">
+                    <label for="address" class="required">Address</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reference">Reference (If any)</label>
+                    <input type="text" id="reference" name="reference">
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button type="submit" id="submitBtn">Submit Application</button>
+                <button type="button" id="homeBtn" class="btn-home">Go Back to Home</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('admissionForm');
+            const photoInput = document.getElementById('photo');
+            const previewImg = document.getElementById('previewImg');
+            const previewText = document.getElementById('previewText');
+            const homeBtn = document.getElementById('homeBtn');
+            
+            // Go to Home button
+            homeBtn.addEventListener('click', function() {
+                Swal.fire({
+                    title: 'Leave this page?',
+                    text: 'Any unsaved changes will be lost. Are you sure you want to go back to the home page?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, go to Home',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '../ruchihomepage.html';
+                    }
+                });
+            });
+
+            // Photo preview
+            photoInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const allowedTypes = ['image/jpeg', 'image/jpg'];
+                    if (!allowedTypes.includes(file.type)) {
+                        Swal.fire({icon: 'error', title: 'Invalid File Type', text: 'Please select JPG or JPEG only'});
+                        this.value = '';
+                        return;
+                    }
+                    if (file.size > 2 * 1024 * 1024) {
+                        Swal.fire({icon: 'error', title: 'File Too Large', text: 'Image must be smaller than 2MB'});
+                        this.value = '';
+                        return;
+                    }
+                    const reader = new FileReader();
+                    previewText.style.display = "none";
+                    previewImg.style.display = "block";
+                    reader.addEventListener("load", function() {
+                        previewImg.setAttribute("src", this.result);
+                    });
+                    reader.readAsDataURL(file);
+                } else {
+                    previewText.style.display = "block";
+                    previewImg.style.display = "none";
+                }
+            });
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+                const validationResult = validateForm();
+                if (!validationResult.isValid) {
+                    Swal.fire({icon: 'error', title: 'Validation Error', html: validationResult.message});
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Application';
+                    return;
+                }
+                Swal.fire({
+                    title: 'Confirm Submission',
+                    text: 'Are you sure you want to submit?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, submit it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const formData = new FormData(form);
+                        fetch('admission_form.php', {method: 'POST', body: formData})
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    html: data.message + '<br><br>Would you like to create an account now?',
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Yes, Sign Up',
+                                    cancelButtonText: 'Go to Home'
+                                }).then((res) => {
+                                    if (res.isConfirmed) {
+                                        window.location.href = 'signup.html';
+                                    } else {
+                                        window.location.href = '../ruchihomepage.html';
+                                    }
+                                });
+                            } else {
+                                Swal.fire({icon: 'error', title: 'Submission Failed', html: data.message});
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire({icon: 'error', title: 'Error', text: 'An error occurred. Please try again.'});
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Submit Application';
+                        });
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Application';
+                    }
+                });
+            });
+
+            function validateForm() {
+                const requiredFields = [
+                    'first_name','last_name','father_name','mother_name','dob','gender',
+                    'class','medium','board','school','previous_marks',
+                    'parent_mobile','personal_mobile','whatsapp','email',
+                    'city','state','pincode','address'
+                ];
+                for (let field of requiredFields) {
+                    const value = document.getElementById(field).value.trim();
+                    if (!value) return {isValid: false, message: field.replace('_',' ') + ' is required'};
+                }
+                const email = document.getElementById('email').value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) return {isValid: false, message: 'Enter a valid email'};
+                const mobilePattern = /^[0-9]{10}$/;
+                if (!mobilePattern.test(document.getElementById('parent_mobile').value.trim())) return {isValid: false, message: 'Enter valid 10-digit Parent Mobile'};
+                if (!mobilePattern.test(document.getElementById('personal_mobile').value.trim())) return {isValid: false, message: 'Enter valid 10-digit Student Mobile'};
+                if (!mobilePattern.test(document.getElementById('whatsapp').value.trim())) return {isValid: false, message: 'Enter valid 10-digit WhatsApp'};
+                const pincode = document.getElementById('pincode').value.trim();
+                const pincodePattern = /^[0-9]{6}$/;
+                if (!pincodePattern.test(pincode)) return {isValid: false, message: 'Enter a valid 6-digit Pincode'};
+                return {isValid: true};
+            }
+        });
+    </script>
+</body>
+</html>
