@@ -29,6 +29,21 @@ assets/
 index.php
 config.php
 
+## 📸 Project Screenshots
+
+### Admin Dashboard
+![Admin Dashboard](Screenshots/Screenshot%202025-12-31%20132153.png)
+
+### Teacher Assignment
+![Teacher Assignment](Screenshots/Screenshot%202025-12-31%20132216.png)
+
+### Attendance Management
+![Attendance Management](Screenshots/Screenshot%202025-12-31%20132233.png)
+
+### Student Management
+![Student Management](Screenshots/Screenshot%202025-12-31%20132302.png)
+
+
 ## Developed By
 Tauﬁq Khan  
 BCA Student
